@@ -28,8 +28,7 @@ namespace System.Monad
 	{
 		public static IOption<T> SomeOrNone<T>(T someValue)
 		{
-			if (EqualityComparer<T>.Default.Equals(someValue, default(T)))
-			{
+			if (EqualityComparer<T>.Default.Equals(someValue, default(T))) {
 				return Maybe.None<T>();
 			}
 			

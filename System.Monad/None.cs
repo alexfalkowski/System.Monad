@@ -47,20 +47,17 @@ namespace System.Monad
 		
 		public override bool Equals(object obj)
 		{
-			if (object.ReferenceEquals(null, obj))
-			{
+			if (object.ReferenceEquals(null, obj)) {
 				return false;
 			}
 			
-			if (object.ReferenceEquals(this, obj))
-			{
+			if (object.ReferenceEquals(this, obj)) {
 				return true;
 			}
 			
 			var type = typeof(None<T>);
 			
-			if (obj.GetType() != type)
-			{
+			if (obj.GetType() != type) {
 				return obj.GetType().GetGenericTypeDefinition() == type.GetGenericTypeDefinition();
 			}
 			

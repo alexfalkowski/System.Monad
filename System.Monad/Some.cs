@@ -68,8 +68,7 @@ namespace System.Monad
 		
 		public bool Equals(Some<T> other)
 		{
-			if (object.ReferenceEquals(null, other))
-			{
+			if (object.ReferenceEquals(null, other)) {
 				return false;
 			}
 			
@@ -78,13 +77,11 @@ namespace System.Monad
 		
 		public override bool Equals(object obj)
 		{
-			if (object.ReferenceEquals(null, obj))
-			{
+			if (object.ReferenceEquals(null, obj)) {
 				return false;
 			}
 			
-			if (object.ReferenceEquals(this, obj))
-			{
+			if (object.ReferenceEquals(this, obj)) {
 				return true;
 			}
 			
