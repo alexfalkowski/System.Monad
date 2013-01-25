@@ -33,6 +33,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="IOption.cs" />
+    <Compile Include="Option.cs" />
+    <Compile Include="None.cs" />
+    <Compile Include="Maybe.cs" />
+    <Compile Include="Some.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
