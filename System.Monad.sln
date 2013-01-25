@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Monad", "System.Monad\System.Monad.csproj", "{7F80A7E8-1339-4484-AC65-AA5ED4924118}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Monad.Specs", "System.Monad.Specs\System.Monad.Specs.csproj", "{D237B23C-DE66-409D-AB2F-BC6E784BA187}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F80A7E8-1339-4484-AC65-AA5ED4924118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F80A7E8-1339-4484-AC65-AA5ED4924118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F80A7E8-1339-4484-AC65-AA5ED4924118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F80A7E8-1339-4484-AC65-AA5ED4924118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D237B23C-DE66-409D-AB2F-BC6E784BA187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D237B23C-DE66-409D-AB2F-BC6E784BA187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D237B23C-DE66-409D-AB2F-BC6E784BA187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D237B23C-DE66-409D-AB2F-BC6E784BA187}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = System.Monad\System.Monad.csproj
+	EndGlobalSection
+EndGlobal
