@@ -38,6 +38,10 @@
     <Compile Include="None.cs" />
     <Compile Include="Maybe.cs" />
     <Compile Include="Some.cs" />
+    <Compile Include="Extensions\MaybeExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
 </Project>
