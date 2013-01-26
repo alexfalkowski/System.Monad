@@ -1,4 +1,4 @@
 System.Monad
 ============
 
-Provides a monad namespace for C# applications
+Provides a monad namespace for imperative .NET applications
