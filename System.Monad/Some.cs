@@ -24,75 +24,73 @@ using System.Collections.Generic;
 
 namespace System.Monad
 {
-	public class Some<T> : Option<T>, IEquatable<Some<T>>
-	{
-		internal Some(T value)
-		{
-			this.Value = value;
-		}
-		
-		public T Value { get; private set; }
-		
-		public override bool HasValue
-		{
-			get
-			{
-				return true;
-			}
-		}
-		
-		public override IEnumerator<T> GetEnumerator()
-		{
-			yield return this.Value;
-		}
-		
-		public override IOption<TResult> Into<TResult>(Func<T, IOption<TResult>> fn)
-		{
-			return fn(this.Value);
-		}
-		
-		public override IOption<TResult> Into<TResult>(Func<T, TResult> fn)
-		{
-			return Maybe.SomeOrNone<TResult>(fn(this.Value));
-		}
-		
-		public override void Into(Action<T> action)
-		{
-			action(this.Value);
-		}
-		
-		public override string ToString()
-		{
-			return this.Value.ToString();
-		}
-		
-		public bool Equals(Some<T> other)
-		{
-			if (object.ReferenceEquals(null, other)) {
-				return false;
-			}
-			
-			return object.ReferenceEquals(this, other) || object.Equals(other.Value, this.Value);
-		}
-		
-		public override bool Equals(object obj)
-		{
-			if (object.ReferenceEquals(null, obj)) {
-				return false;
-			}
-			
-			if (object.ReferenceEquals(this, obj)) {
-				return true;
-			}
-			
-			var some = obj as Some<T>;
-			
-			return some != null && this.Equals(some);
-		}
-		
-		public override int GetHashCode()
-		{
-			return this.Value.GetHashCode();
-		}
-	}
+    public class Some<T> : Option<T>, IEquatable<Some<T>>
+    {
+        internal Some(T value)
+        {
+            this.Value = value;
+        }
+
+        public T Value { get; private set; }
+
+        public override bool HasValue {
+            get {
+                return true;
+            }
+        }
+
+        public override IEnumerator<T> GetEnumerator()
+        {
+            yield return this.Value;
+        }
+
+        public override IOption<TResult> Into<TResult>(Func<T, IOption<TResult>> function)
+        {
+            return function(this.Value);
+        }
+
+        public override IOption<TResult> Into<TResult>(Func<T, TResult> function)
+        {
+            return Maybe.SomeOrNone<TResult>(function(this.Value));
+        }
+
+        public override void Into(Action<T> action)
+        {
+            action(this.Value);
+        }
+
+        public override string ToString()
+        {
+            return this.Value.ToString();
+        }
+
+        public bool Equals(Some<T> other)
+        {
+            if (object.ReferenceEquals(null, other)) {
+                return false;
+            }
+
+            return object.ReferenceEquals(this, other) || object.Equals(other.Value, this.Value);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (object.ReferenceEquals(null, obj)) {
+                return false;
+            }
+
+            if (object.ReferenceEquals(this, obj)) {
+                return true;
+            }
+
+            var some = obj as Some<T>;
+
+            return some != null && this.Equals(some);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Value.GetHashCode();
+        }
+    }
 }

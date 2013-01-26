@@ -24,64 +24,64 @@ using System.Collections.Generic;
 
 namespace System.Monad
 {
-	public class None<T> : Option<T>, IEquatable<None<T>> 
+    public class None<T> : Option<T>, IEquatable<None<T>> 
 	{
-		internal None()
-		{
-		}
+        internal None()
+        {
+        }
 
-		public override IEnumerator<T> GetEnumerator()
-		{
-			yield break;
-		}
-		
-		public override string ToString()
-		{
-			return "None";
-		}
-		
-		public bool Equals(None<T> other)
-		{
-			return !object.ReferenceEquals(null, other);
-		}
-		
-		public override bool Equals(object obj)
-		{
-			if (object.ReferenceEquals(null, obj)) {
-				return false;
-			}
-			
-			if (object.ReferenceEquals(this, obj)) {
-				return true;
-			}
-			
-			var type = typeof(None<T>);
-			
-			if (obj.GetType() != type) {
-				return obj.GetType().GetGenericTypeDefinition() == type.GetGenericTypeDefinition();
-			}
-			
-			var other = (None<T>)obj;
-			return this.Equals(other);
-		}
-		
-		public override int GetHashCode()
-		{
-			return 0;
-		}
-		
-		public override IOption<TResult> Into<TResult>(Func<T, IOption<TResult>> fn)
-		{
-			return Maybe.None<TResult>();
-		}
-		
-		public override IOption<TResult> Into<TResult>(Func<T, TResult> fn)
-		{
-			return Maybe.None<TResult>();
-		}
-		
-		public override void Into(Action<T> action)
-		{
-		}
-	}
+        public override IEnumerator<T> GetEnumerator()
+        {
+            yield break;
+        }
+
+        public override string ToString()
+        {
+            return "None";
+        }
+
+        public bool Equals(None<T> other)
+        {
+            return !object.ReferenceEquals(null, other);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (object.ReferenceEquals(null, obj)) {
+                return false;
+            }
+
+            if (object.ReferenceEquals(this, obj)) {
+                return true;
+            }
+
+            var type = typeof(None<T>);
+
+            if (obj.GetType() != type) {
+                return obj.GetType().GetGenericTypeDefinition() == type.GetGenericTypeDefinition();
+            }
+
+            var other = (None<T>)obj;
+            return this.Equals(other);
+        }
+
+        public override int GetHashCode()
+        {
+            return 0;
+        }
+
+        public override IOption<TResult> Into<TResult>(Func<T, IOption<TResult>> fn)
+        {
+            return Maybe.None<TResult>();
+        }
+
+        public override IOption<TResult> Into<TResult>(Func<T, TResult> fn)
+        {
+            return Maybe.None<TResult>();
+        }
+
+        public override void Into(Action<T> action)
+        {
+        }
+    }
 }

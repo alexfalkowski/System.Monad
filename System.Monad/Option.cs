@@ -25,27 +25,25 @@ using System.Collections.Generic;
 
 namespace System.Monad
 {
-	public abstract class Option<T> : IOption<T>
+    public abstract class Option<T> : IOption<T>
 	{
-		public virtual bool HasValue
-		{
-			get
-			{
-				return false;   
-			}
-		}
-		
-		public abstract IEnumerator<T> GetEnumerator();
-		
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return this.GetEnumerator();
-		}
-		
-		public abstract IOption<TResult> Into<TResult>(Func<T, IOption<TResult>> fn);
-		
-		public abstract IOption<TResult> Into<TResult>(Func<T, TResult> fn);
-		
-		public abstract void Into(Action<T> action);
-	}
+        public virtual bool HasValue {
+            get {
+                return false;   
+            }
+        }
+
+        public abstract IEnumerator<T> GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+
+        public abstract IOption<TResult> Into<TResult>(Func<T, IOption<TResult>> fn);
+
+        public abstract IOption<TResult> Into<TResult>(Func<T, TResult> fn);
+
+        public abstract void Into(Action<T> action);
+    }
 }

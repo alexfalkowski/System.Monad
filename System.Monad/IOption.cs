@@ -26,12 +26,12 @@ namespace System.Monad
 {
 	public interface IOption<out T> : IEnumerable<T>
 	{
-		bool HasValue { get; }
-		
-		IOption<TResult> Into<TResult>(Func<T, IOption<TResult>> fn);
-		
-		IOption<TResult> Into<TResult>(Func<T, TResult> fn);
-		
-		void Into(Action<T> action);
+        bool HasValue { get; }
+
+        IOption<TResult> Into<TResult>(Func<T, IOption<TResult>> fn);
+
+        IOption<TResult> Into<TResult>(Func<T, TResult> fn);
+
+        void Into(Action<T> action);
 	}
 }

@@ -24,20 +24,20 @@ using System.Collections.Generic;
 
 namespace System.Monad
 {
-	public static class Maybe
-	{
-		public static IOption<T> SomeOrNone<T>(T someValue)
-		{
-			if (EqualityComparer<T>.Default.Equals(someValue, default(T))) {
-				return Maybe.None<T>();
-			}
-			
-			return new Some<T>(someValue);
-		}
+    public static class Maybe
+    {
+        public static IOption<T> SomeOrNone<T>(T someValue)
+        {
+            if (EqualityComparer<T>.Default.Equals(someValue, default(T))) {
+                return Maybe.None<T>();
+            }
 
-		public static IOption<T> None<T>()
-		{
-			return new None<T>();
-		}
-	}
+            return new Some<T>(someValue);
+        }
+
+        public static IOption<T> None<T>()
+        {
+            return new None<T>();
+        }
+    }
 }
