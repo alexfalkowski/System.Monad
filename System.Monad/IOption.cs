@@ -24,7 +24,7 @@ using System.Collections.Generic;
 
 namespace System.Monad
 {
-	public interface IOption<out T> : IEnumerable<T>
+	public interface IOption<T> : IEnumerable<T>
 	{
         bool HasValue { get; }
 

@@ -38,6 +38,7 @@ x64/
 *.vspscc
 *.vssscc
 .builds
+artifacts
 
 # Visual C++ cache files
 ipch/
@@ -101,6 +102,7 @@ ClientBin
 [Ss]tyle[Cc]op.*
 ~$*
 *.dbmdl
+.idea/
 Generated_Code #added for RIA/Silverlight projects
 
 # Backup & report files from converting an old project file to a newer
