@@ -13,9 +13,9 @@ end
 
 desc 'Get all the referenced packages'
 exec :packages do |command|
-  create_executable('nuget', 'packages/NuGet.CommandLine.2.2.0/tools/NuGet.exe')
-  command.command = './nuget'
-  command.parameters "install #{Dir['./**/packages.config'].first} -o packages"
+  create_executable('nuget', Dir['**/NuGet.exe'].first)
+  command.command = 'nuget'
+  command.parameters "install #{Dir['**/packages.config'].first} -o packages"
 end
 
 desc 'Build the solution'
@@ -30,8 +30,8 @@ end
 
 desc 'Run the specs'
 nunit :specs do |nunit|
-  create_executable('nunit-console', 'packages/NUnit.2.5.10.11092/tools/nunit-console.exe')
-  nunit.command = './nunit-console'
+  create_executable('nunit-console', Dir['**/nunit-console.exe'])
+  nunit.command = 'nunit-console'
   nunit.options '-noshadow'
   nunit.assemblies 'artifacts/System.Monad.Specs.dll'
 end
