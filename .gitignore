@@ -39,6 +39,8 @@ x64/
 *.vssscc
 .builds
 artifacts
+nuget
+nunit-console
 
 # Visual C++ cache files
 ipch/
