@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OptionSpecs.cs" />
-    <Compile Include="MaybeExtensionsSpecs.cs" />
+    <Compile Include="OptionExtensionsSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\System.Monad\System.Monad.csproj">

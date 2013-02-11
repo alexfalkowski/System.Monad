@@ -28,7 +28,7 @@ using NUnit.Framework;
 namespace System.Monad.Specs
 {
     [TestFixture]
-    public class MaybeExtensionsSpecs
+    public class OptionExtensionsSpecs
     {
         [Test]
         public void ShouldBeNoneForNullableType()
@@ -44,6 +44,38 @@ namespace System.Monad.Specs
             string test = null;
             var value = test.SomeOrNone();
             Assert.IsInstanceOf<None<string>>(value);
+        }
+
+        [Test]
+        public void ShouldBeNoneWithEmptyString()
+        {
+            string test = string.Empty;
+            var value = test.SomeStringOrNone();
+            Assert.IsInstanceOf<None<string>>(value);
+        }
+
+        [Test]
+        public void ShouldBeNoneWithWhiteSpace()
+        {
+            string test = "   ";
+            var value = test.SomeStringOrNone();
+            Assert.IsInstanceOf<None<string>>(value);
+        }
+
+        [Test]
+        public void ShouldBeSomeUri()
+        {
+            string test = "http://test.com";
+            var value = test.SomeUriOrNone();
+            Assert.IsInstanceOf<Some<Uri>>(value);
+        }
+
+        [Test]
+        public void ShouldBeNoneUri()
+        {
+            string test = "   ";
+            IOption<Uri> value = test.SomeUriOrNone();
+            Assert.IsInstanceOf<None<Uri>>(value);
         }
 
         [Test]

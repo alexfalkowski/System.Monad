@@ -23,7 +23,7 @@ using System;
 
 namespace System.Monad.Extensions
 {
-    public static class MaybeExtensions
+    public static class OptionExtensions
     {
         public static IOption<T> SomeOrNone<T>(this T? value) where T : struct
         {
@@ -33,6 +33,26 @@ namespace System.Monad.Extensions
         public static IOption<T> SomeOrNone<T>(this T value)
         {
             return Maybe.SomeOrNone(value);
+        }
+
+        public static IOption<string> SomeStringOrNone(this string value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) {
+                return Maybe.None<string>();
+            }
+
+            return new Some<string>(value);
+        }
+
+        public static IOption<Uri> SomeUriOrNone(this string value)
+        {
+            Uri uri;
+
+            if (!Uri.TryCreate(value, UriKind.Absolute, out uri)) {
+                return Maybe.None<Uri>();
+            }
+            
+            return new Some<Uri>(uri);
         }
 
         public static IOption<TResult> Or<TResult, T>(this IOption<T> some, TResult other) where T : TResult
