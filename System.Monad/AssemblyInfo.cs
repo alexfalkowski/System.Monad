@@ -1,12 +1,8 @@
 using System.Reflection;
-using System.Runtime.CompilerServices;
-
+using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("System.Monad")]
-[assembly: AssemblyDescription("Provides a monad namespace for C# applications")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("alex.falkowski")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("en-AU")]
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyDescription("System.Monad")]
+[assembly: AssemblyCompany("alex.falkowski")]
+[assembly: AssemblyProduct("System.Monad")]
+[assembly: AssemblyCopyright("2013")]
+[assembly: AssemblyVersion("1.0.0")]
