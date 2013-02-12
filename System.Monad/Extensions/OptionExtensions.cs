@@ -41,4 +41,3 @@ namespace System.Monad.Extensions
         }
     }
 }
-
