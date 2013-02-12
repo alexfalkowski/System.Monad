@@ -1,5 +1,5 @@
 //
-//  MaybeExtensions.cs
+//  StringExtensions.cs
 //
 //  Author:
 //       alexfalkowski <alexrfalkowski@gmail.com>
@@ -23,21 +23,37 @@ using System;
 
 namespace System.Monad.Extensions
 {
-    public static class OptionExtensions
+    public static class StringExtensions
     {
-        public static IOption<T> SomeOrNone<T>(this T? value) where T : struct
+        public static IOption<string> SomeStringOrNone(this string value)
         {
-            return value.HasValue ? value.Value.SomeOrNone() : Maybe.None<T>();
+            if (string.IsNullOrWhiteSpace(value)) {
+                return Maybe.None<string>();
+            }
+            
+            return new Some<string>(value);
         }
         
-        public static IOption<T> SomeOrNone<T>(this T value)
+        public static IOption<Uri> SomeUriOrNone(this string value)
         {
-            return Maybe.SomeOrNone(value);
+            Uri uri;
+            
+            if (!Uri.TryCreate(value, UriKind.Absolute, out uri)) {
+                return Maybe.None<Uri>();
+            }
+            
+            return new Some<Uri>(uri);
         }
-
-        public static IOption<TResult> Or<TResult, T>(this IOption<T> some, TResult other) where T : TResult
+        
+        public static IOption<int> SomeIntegerOrNone(this string value)
         {
-            return some.HasValue ? some as IOption<TResult> : other.SomeOrNone();
+            int integer;
+            
+            if (!int.TryParse(value, out integer)) {
+                return Maybe.None<int>();
+            }
+            
+            return new Some<int>(integer);
         }
     }
 }

@@ -80,6 +80,22 @@ namespace System.Monad.Specs
         }
 
         [Test]
+        public void ShouldBeSomeInteger()
+        {
+            string test = "0";
+            var value = test.SomeIntegerOrNone();
+            value.Should().BeAssignableTo<Some<int>>();
+        }
+        
+        [Test]
+        public void ShouldBeNoneInteger()
+        {
+            string test = "   ";
+            var value = test.SomeIntegerOrNone();
+            value.Should().BeAssignableTo<None<int>>();
+        }
+
+        [Test]
         public void ShouldNotGetAlternativeValue()
         {
             var value = 5.SomeOrNone().Or(6);

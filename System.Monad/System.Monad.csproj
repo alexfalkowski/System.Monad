@@ -39,6 +39,7 @@
     <Compile Include="Maybe.cs" />
     <Compile Include="Some.cs" />
     <Compile Include="Extensions\OptionExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
