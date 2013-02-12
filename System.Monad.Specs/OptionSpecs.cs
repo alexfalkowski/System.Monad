@@ -33,14 +33,14 @@ namespace System.Monad.Specs
         public void ShouldBeSome()
         {
             var value = Maybe.SomeOrNone<int>(1);
-            Assert.IsInstanceOf<Some<int>>(value);
+            value.Should().BeAssignableTo<Some<int>>();
         }
 
         [Test]
         public void ShouldBeNone()
         {
             var value = Maybe.None<string>();
-            Assert.IsInstanceOf<None<string>>(value);
+            value.Should().BeAssignableTo<None<string>>();
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace System.Monad.Specs
             var called = false;
 
             value.Into(test => called = true);
-            Assert.IsTrue(called);
+            called.Should().BeTrue();
         }
 
         [Test]
@@ -60,7 +60,7 @@ namespace System.Monad.Specs
             var called = false;
 
             value.Into(test => called = true);
-            Assert.IsFalse(called);
+            called.Should().BeFalse();
         }
 
         [Test]
@@ -68,7 +68,7 @@ namespace System.Monad.Specs
         {
             var value = Maybe.SomeOrNone<int>(1);
             var result = value.Into<int>(test => 3);
-            Assert.AreEqual(Maybe.SomeOrNone<int>(3), result);
+            result.Should().Equal(Maybe.SomeOrNone<int>(3));
         }
 
         [Test]
@@ -76,7 +76,7 @@ namespace System.Monad.Specs
         {
             var value = Maybe.SomeOrNone<int>(1);
             var result = value.Into<int>(test => Maybe.SomeOrNone<int>(3));
-            Assert.AreEqual(Maybe.SomeOrNone<int>(3), result);
+            result.Should().Equal(Maybe.SomeOrNone<int>(3));
         }
 
         [Test]
@@ -84,7 +84,7 @@ namespace System.Monad.Specs
         {
             var value = Maybe.None<string>();
             var result = value.Into<string>(test => "Nope");
-            Assert.AreEqual(Maybe.None<string>(), result);
+            result.Should().Equal(Maybe.None<string>());
         }
 
         [Test]
@@ -92,21 +92,21 @@ namespace System.Monad.Specs
         {
             var value = Maybe.None<string>();
             var result = value.Into<string>(test => Maybe.SomeOrNone<string>("Nope"));
-            Assert.AreEqual(Maybe.None<string>(), result);
+            result.Should().Equal(Maybe.None<string>());
         }
 
         [Test]
         public void ShouldBeEqual()
         {
-            Assert.AreEqual(Maybe.None<object>(), Maybe.SomeOrNone<object>(null));
-            Assert.AreEqual(Maybe.SomeOrNone<int>(1), Maybe.SomeOrNone<int>(1));
+            Maybe.None<object>().Should().Equal(Maybe.SomeOrNone<object>(null));
+            Maybe.SomeOrNone<int>(1).Should().Equal(Maybe.SomeOrNone<int>(1));
         }
 
         [Test]
         public void ShouldHaveNoValue()
         {
-            Assert.IsFalse(Maybe.None<object>().HasValue);
-            Assert.IsFalse(Maybe.SomeOrNone<int>(0).HasValue);
+            Maybe.None<object>().HasValue.Should().BeFalse();
+            Maybe.SomeOrNone<int>(0).HasValue.Should().BeFalse();
         }
     }
 }

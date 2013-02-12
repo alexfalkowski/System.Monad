@@ -22,6 +22,7 @@
 using System;
 using System.Monad;
 using System.Monad.Extensions;
+
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -35,7 +36,7 @@ namespace System.Monad.Specs
         {
             int? integer = null;
             var value = integer.SomeOrNone();
-            Assert.IsInstanceOf<None<int>>(value);
+            value.Should().BeAssignableTo<None<int>>();
         }
 
         [Test]
@@ -43,7 +44,7 @@ namespace System.Monad.Specs
         {
             string test = null;
             var value = test.SomeOrNone();
-            Assert.IsInstanceOf<None<string>>(value);
+            value.Should().BeAssignableTo<None<string>>();
         }
 
         [Test]
@@ -51,7 +52,7 @@ namespace System.Monad.Specs
         {
             string test = string.Empty;
             var value = test.SomeStringOrNone();
-            Assert.IsInstanceOf<None<string>>(value);
+            value.Should().BeAssignableTo<None<string>>();
         }
 
         [Test]
@@ -59,7 +60,7 @@ namespace System.Monad.Specs
         {
             string test = "   ";
             var value = test.SomeStringOrNone();
-            Assert.IsInstanceOf<None<string>>(value);
+            value.Should().BeAssignableTo<None<string>>();
         }
 
         [Test]
@@ -67,30 +68,29 @@ namespace System.Monad.Specs
         {
             string test = "http://test.com";
             var value = test.SomeUriOrNone();
-            Assert.IsInstanceOf<Some<Uri>>(value);
+            value.Should().BeAssignableTo<Some<Uri>>();
         }
 
         [Test]
         public void ShouldBeNoneUri()
         {
             string test = "   ";
-            IOption<Uri> value = test.SomeUriOrNone();
-            Assert.IsInstanceOf<None<Uri>>(value);
+            var value = test.SomeUriOrNone();
+            value.Should().BeAssignableTo<None<Uri>>();
         }
 
         [Test]
         public void ShouldNotGetAlternativeValue()
         {
             var value = 5.SomeOrNone().Or(6);
-            Assert.AreEqual(5.SomeOrNone(), value);
+            value.Should().Equal(5.SomeOrNone());
         }
         
         [Test]
         public void ShouldGetAlternativeValue()
         {
             var value = Maybe.None<int>().Or(6);
-
-            Assert.AreEqual(6.SomeOrNone(), value);
+            value.Should().Equal(6.SomeOrNone());
         }
     }
 }
