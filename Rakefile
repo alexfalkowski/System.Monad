@@ -1,7 +1,7 @@
 require 'albacore'
 
 CURRENT_PATH = File.expand_path(File.dirname(__FILE__))
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 ARTIFACTS_PATH = File.join(CURRENT_PATH, 'artifacts')
 
 desc 'Get all the referenced packages'
@@ -19,7 +19,7 @@ xbuild :build => :assembly_info do |build|
 end
 
 desc 'Run the specs'
-nunit :specs do |nunit|
+nunit :specs => :build do |nunit|
   nunit.command = 'tools/nunit-console'
   nunit.options '-noshadow'
   nunit.assemblies 'artifacts/System.Monad.Specs.dll'
@@ -45,6 +45,7 @@ nuspec :nuget_spec do |nuspec|
   nuspec.title = 'System.Monad'
   nuspec.language = 'en-AU'
   nuspec.projectUrl = 'https://github.com/alexfalkowski/System.Monad'
+  nuspec.iconUrl = 'http://newartisans.com/files/2012/08/Monad.png'
   nuspec.working_directory = 'artifacts'
   nuspec.output_file = 'System.Monad.nuspec'
   nuspec.file 'System.Monad.dll', 'lib/net40'
