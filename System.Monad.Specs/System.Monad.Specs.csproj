@@ -44,13 +44,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OptionSpecs.cs" />
-    <Compile Include="OptionExtensionsSpecs.cs" />
+    <Compile Include="Maybe\OptionExtensionsSpecs.cs" />
+    <Compile Include="Maybe\OptionSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\System.Monad\System.Monad.csproj">
       <Project>{7F80A7E8-1339-4484-AC65-AA5ED4924118}</Project>
       <Name>System.Monad</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Maybe\" />
   </ItemGroup>
 </Project>

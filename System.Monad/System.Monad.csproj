@@ -33,16 +33,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="IOption.cs" />
-    <Compile Include="Option.cs" />
-    <Compile Include="None.cs" />
-    <Compile Include="Maybe.cs" />
-    <Compile Include="Some.cs" />
-    <Compile Include="Extensions\OptionExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Maybe\Extensions\OptionExtensions.cs" />
+    <Compile Include="Maybe\Extensions\StringExtensions.cs" />
+    <Compile Include="Maybe\IOption.cs" />
+    <Compile Include="Maybe\None.cs" />
+    <Compile Include="Maybe\Some.cs" />
+    <Compile Include="Maybe\OptionBase.cs" />
+    <Compile Include="Maybe\Option.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <Folder Include="Maybe\" />
   </ItemGroup>
 </Project>
