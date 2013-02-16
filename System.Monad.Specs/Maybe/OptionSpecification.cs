@@ -1,6 +1,3 @@
-//
-//  OptionSpecs.cs
-//
 //  Author:
 //       alexfalkowski <alexrfalkowski@gmail.com>
 //

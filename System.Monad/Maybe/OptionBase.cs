@@ -1,6 +1,3 @@
-//
-//  Option.cs
-//
 //  Author:
 //       alexfalkowski <alexrfalkowski@gmail.com>
 //
@@ -26,7 +23,7 @@ namespace System.Monad.Maybe
     using System.Collections.Generic;
 
     public abstract class OptionBase<T> : IOption<T>
-	{
+    {
         public virtual bool HasValue {
             get {
                 return false;   

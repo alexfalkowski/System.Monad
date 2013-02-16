@@ -1,6 +1,3 @@
-//
-//  Maybe.cs
-//
 //  Author:
 //       alexfalkowski <alexrfalkowski@gmail.com>
 //

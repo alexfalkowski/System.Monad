@@ -1,6 +1,3 @@
-//
-//  MaybeExtensionsSpecs.cs
-//
 //  Author:
 //       alexfalkowski <alexrfalkowski@gmail.com>
 //

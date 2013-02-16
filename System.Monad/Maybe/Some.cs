@@ -1,6 +1,3 @@
-//
-//  Some.cs
-//
 //  Author:
 //       alexfalkowski <alexrfalkowski@gmail.com>
 //

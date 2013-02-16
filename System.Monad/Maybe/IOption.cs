@@ -1,6 +1,3 @@
-//
-//  IOption.cs
-//
 //  Author:
 //       alexfalkowski <alexrfalkowski@gmail.com>
 //
@@ -24,8 +21,8 @@ namespace System.Monad.Maybe
     using System;
     using System.Collections.Generic;
 
-	public interface IOption<T> : IEnumerable<T>
-	{
+    public interface IOption<T> : IEnumerable<T>
+    {
         bool HasValue { get; }
 
         IOption<TResult> Into<TResult>(Func<T, IOption<TResult>> fn);
@@ -33,5 +30,5 @@ namespace System.Monad.Maybe
         IOption<TResult> Into<TResult>(Func<T, TResult> fn);
 
         void Into(Action<T> action);
-	}
+    }
 }

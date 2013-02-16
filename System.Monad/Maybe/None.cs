@@ -1,6 +1,3 @@
-//
-//  None.cs
-//
 //  Author:
 //       alexfalkowski <alexrfalkowski@gmail.com>
 //
@@ -24,8 +21,8 @@ namespace System.Monad.Maybe
     using System;
     using System.Collections.Generic;
 
-    public class None<T> : OptionBase<T>, IEquatable<None<T>> 
-	{
+    public class None<T> : OptionBase<T>, IEquatable<None<T>>
+    {
         internal None()
         {
         }
