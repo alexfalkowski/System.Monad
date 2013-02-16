@@ -6,12 +6,14 @@ ARTIFACTS_PATH = File.join(CURRENT_PATH, 'artifacts')
 
 desc 'Get all the referenced packages'
 exec :packages do |command|
+  FileUtils.rm_rf('packages')
   command.command = 'tools/nuget'
   command.parameters "install #{Dir['**/packages.config'].first} -o packages"
 end
 
 desc 'Build the solution'
 xbuild :build => :assembly_info do |build|
+  FileUtils.rm_rf(ARTIFACTS_PATH)
   build.solution = 'System.Monad.sln'
   build.properties = { :configuration => :Release, :OutputPath => ARTIFACTS_PATH }
   build.targets :Rebuild
@@ -19,10 +21,9 @@ xbuild :build => :assembly_info do |build|
 end
 
 desc 'Run the specs'
-nunit :specs => :build do |nunit|
-  nunit.command = 'tools/nunit-console'
-  nunit.options '-noshadow'
-  nunit.assemblies 'artifacts/System.Monad.Specs.dll'
+exec :specs => :build do |command|
+  command.command = 'packages/System.Spec.1.1.3/tools/spec.sh'
+  command.parameters '-e artifacts'
 end
 
 desc 'Version the assembly'

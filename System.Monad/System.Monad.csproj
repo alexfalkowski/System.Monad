@@ -32,7 +32,6 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Maybe\Extensions\OptionExtensions.cs" />
     <Compile Include="Maybe\Extensions\StringExtensions.cs" />
     <Compile Include="Maybe\IOption.cs" />
@@ -40,6 +39,7 @@
     <Compile Include="Maybe\Some.cs" />
     <Compile Include="Maybe\OptionBase.cs" />
     <Compile Include="Maybe\Option.cs" />
+    <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
