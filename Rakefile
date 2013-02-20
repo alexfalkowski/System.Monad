@@ -22,7 +22,7 @@ end
 
 desc 'Run the specs'
 exec :specs => :build do |command|
-  command.command = 'packages/System.Spec.1.2.0/tools/spec.sh'
+  command.command = 'packages/System.Spec.1.2.1/tools/spec.sh'
   command.parameters '-e artifacts'
 end
 
