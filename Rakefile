@@ -1,7 +1,7 @@
 require 'albacore'
 
 CURRENT_PATH = File.expand_path(File.dirname(__FILE__))
-VERSION = '1.1.3'
+VERSION = '1.1.4'
 ARTIFACTS_PATH = File.join(CURRENT_PATH, 'artifacts')
 
 desc 'Get all the referenced packages'
@@ -22,7 +22,7 @@ end
 
 desc 'Run the specs'
 exec :specs => :build do |command|
-  command.command = 'packages/System.Spec.1.1.3/tools/spec.sh'
+  command.command = 'packages/System.Spec.1.2.0/tools/spec.sh'
   command.parameters '-e artifacts'
 end
 
