@@ -24,3 +24,16 @@ With that in mind we can write code as follows:
     }
 
  This will make sure that if we have a value we returned the transformed value and if not then it is a None. This also makes your intensions more explicit that the method can return None.
+
+Identity Monad
+--------------
+
+As mentioned in [haskel](http://hackage.haskell.org/packages/archive/mtl/1.1.0.2/doc/html/Control-Monad-Identity.html)
+
+> The Identity monad is a monad that does not embody any computational strategy. It simply applies the bound function to its input without any modification. Computationally, there is no reason to use the Identity monad instead of the much simpler act of simply applying functions to their arguments. The purpose of the Identity monad is its fundamental role in the theory of monad transformers. Any monad transformer applied to the Identity monad yields a non-transformer version of that monad.
+
+An example in C# is as follows:
+
+    var value = from x in 5.ToIdentity()
+                from y in 6.ToIdentity()
+                select x + y;
