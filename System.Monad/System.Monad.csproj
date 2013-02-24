@@ -40,9 +40,13 @@
     <Compile Include="Maybe\OptionBase.cs" />
     <Compile Include="Maybe\Option.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Identity\IdentityValue.cs" />
+    <Compile Include="Identity\Extensions\IdentityValueExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Maybe\" />
+    <Folder Include="Identity\" />
+    <Folder Include="Identity\Extensions\" />
   </ItemGroup>
 </Project>

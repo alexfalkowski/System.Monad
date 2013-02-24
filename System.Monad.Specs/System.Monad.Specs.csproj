@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Maybe\OptionSpecification.cs" />
     <Compile Include="Maybe\OptionExtensionsSpecification.cs" />
+    <Compile Include="Identity\IdentitySpecification.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\System.Monad\System.Monad.csproj">
@@ -58,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Maybe\" />
+    <Folder Include="Identity\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
