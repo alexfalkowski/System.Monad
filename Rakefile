@@ -1,7 +1,7 @@
 require 'albacore'
 
 CURRENT_PATH = File.expand_path(File.dirname(__FILE__))
-VERSION = '1.1.4'
+VERSION = '1.1.5'
 ARTIFACTS_PATH = File.join(CURRENT_PATH, 'artifacts')
 
 desc 'Get all the referenced packages'
@@ -18,11 +18,12 @@ xbuild :build => :assembly_info do |build|
   build.properties = { :configuration => :Release, :OutputPath => ARTIFACTS_PATH }
   build.targets :Rebuild
   build.verbosity = 'quiet'
+  build.parameters '/nologo'
 end
 
 desc 'Run the specs'
 exec :specs => :build do |command|
-  command.command = 'packages/System.Spec.1.2.1/tools/spec.sh'
+  command.command = 'packages/System.Spec.1.3.0/tools/spec.sh'
   command.parameters '-e artifacts'
 end
 
