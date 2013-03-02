@@ -25,24 +25,24 @@ namespace System.Monad.Specs.Maybe
 
     public class OptionSpecification : Specification
     {
-        public override void Validate()
+        protected override void Define()
         {
-            Describe("some values", describe => {
-                describe.It("should be some integer", () => {
+            Describe("some values", () => {
+                It("should be some integer", () => {
                     var value = Option.SomeOrNone<int>(1);
                     value.Should().BeAssignableTo<Some<int>>();
                 });
             });
 
-            Describe("none values", describe => {
-                describe.It("should be a none string", () => {
+            Describe("none values", () => {
+                It("should be a none string", () => {
                     var value = Option.None<string>();
                     value.Should().BeAssignableTo<None<string>>();
                 });
             });
 
-            Describe("actions", describe => {
-                describe.It("should perform action", () => {
+            Describe("actions", () => {
+                It("should perform action", () => {
                     var value = Option.SomeOrNone<int>(1);
                     var called = false;
                     
@@ -50,7 +50,7 @@ namespace System.Monad.Specs.Maybe
                     called.Should().BeTrue();
                 });
 
-                describe.It("should not perform action", () => {
+                It("should not perform action", () => {
                     var value = Option.None<string>();
                     var called = false;
                     
@@ -59,39 +59,39 @@ namespace System.Monad.Specs.Maybe
                 });
             });
 
-            Describe("functions", describe => {
-                describe.It("should perform function", () => {
+            Describe("functions", () => {
+                It("should perform function", () => {
                     var value = Option.SomeOrNone<int>(1);
                     var result = value.Into<int>(test => 3);
                     result.Should().Equal(Option.SomeOrNone<int>(3));
                 });
 
-                describe.It("should perform function with option", () => {
+                It("should perform function with option", () => {
                     var value = Option.SomeOrNone<int>(1);
                     var result = value.Into<int>(test => Option.SomeOrNone<int>(3));
                     result.Should().Equal(Option.SomeOrNone<int>(3));
                 });
 
-                describe.It("should not perform function", () => {
+                It("should not perform function", () => {
                     var value = Option.None<string>();
                     var result = value.Into<string>(test => "Nope");
                     result.Should().Equal(Option.None<string>());
                 });
                 
-                describe.It("should not perform function with option", () => {
+                It("should not perform function with option", () => {
                     var value = Option.None<string>();
                     var result = value.Into<string>(test => Option.SomeOrNone<string>("Nope"));
                     result.Should().Equal(Option.None<string>());
                 });
             });
 
-            Describe("equality", describe => {
-                describe.It("should be equal", () => {
+            Describe("equality", () => {
+                It("should be equal", () => {
                     Option.None<object>().Should().Equal(Option.SomeOrNone<object>(null));
                     Option.SomeOrNone<int>(1).Should().Equal(Option.SomeOrNone<int>(1));
                 });
                 
-                describe.It("should have no value", () => {
+                It("should have no value", () => {
                     Option.None<object>().HasValue.Should().BeFalse();
                     Option.SomeOrNone<int>(0).HasValue.Should().BeFalse();
                 });

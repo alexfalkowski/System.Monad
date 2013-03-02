@@ -26,67 +26,67 @@ namespace System.Monad.Specs.Maybe
 
     public class OptionExtensionsSpecification : Specification
     {
-        public override void Validate()
+        protected override void Define()
         {
-            Describe("some values", describe => {
-                describe.It("should be some uri", () => {
+            Describe("some values", () => {
+                It("should be some uri", () => {
                     string test = "http://test.com";
                     var value = test.SomeUriOrNone();
                     value.Should().BeAssignableTo<Some<Uri>>();
                 });
 
-                describe.It("should be some integer", () => {
+                It("should be some integer", () => {
                     string test = "0";
                     var value = test.SomeIntegerOrNone();
                     value.Should().BeAssignableTo<Some<int>>();
                 });
             });
 
-            Describe("none values", describe => {
-                describe.It("should be none for nullable type", () => {
+            Describe("none values", () => {
+                It("should be none for nullable type", () => {
                     int? integer = null;
                     var value = integer.SomeOrNone();
                     value.Should().BeAssignableTo<None<int>>();
                 });
 
-                describe.It("should be none", () => {
+                It("should be none", () => {
                     string test = null;
                     var value = test.SomeOrNone();
                     value.Should().BeAssignableTo<None<string>>();
                 });
 
-                describe.It("should be none with empty string", () => {
+                It("should be none with empty string", () => {
                     string test = string.Empty;
                     var value = test.SomeStringOrNone();
                     value.Should().BeAssignableTo<None<string>>();
                 });
 
-                describe.It("should be none with white space", () => {
+                It("should be none with white space", () => {
                     string test = "   ";
                     var value = test.SomeStringOrNone();
                     value.Should().BeAssignableTo<None<string>>();
                 });
 
-                describe.It("should be none uri", () => {
+                It("should be none uri", () => {
                     string test = "   ";
                     var value = test.SomeUriOrNone();
                     value.Should().BeAssignableTo<None<Uri>>();
                 });
 
-                describe.It("should be none integer", () => {
+                It("should be none integer", () => {
                     string test = "   ";
                     var value = test.SomeIntegerOrNone();
                     value.Should().BeAssignableTo<None<int>>();
                 });
             });
 
-            Describe("alternative values", describe => {
-                describe.It("should not get alternative value", () => {
+            Describe("alternative values", () => {
+                It("should not get alternative value", () => {
                     var value = 5.SomeOrNone().Or(6);
                     value.Should().Equal(5.SomeOrNone());
                 });
                 
-                describe.It("should get alternative value", () => {
+                It("should get alternative value", () => {
                     var value = Option.None<int>().Or(6);
                     value.Should().Equal(6.SomeOrNone());
                 });

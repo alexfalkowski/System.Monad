@@ -26,24 +26,24 @@ namespace System.Monad.Specs.Identity
 
     public class IdentitySpecification : Specification
     {
-        public override void Validate()
+        protected override void Define()
         {
-            Describe("identity values", describe => {
-                describe.It("should be add two integers", () => {
+            Describe("identity values", () => {
+                It("should be add two integers", () => {
                     var value = from x in 5.ToIdentity()
                                 from y in 6.ToIdentity()
                                 select x + y;
                     value.First().Should().Be(11);
                 });
 
-                describe.It("should be add an integer and a string", () => {
+                It("should be add an integer and a string", () => {
                     var value = from x in 5.ToIdentity()
                                 from y in "test".ToIdentity()
                                 select x + y;
                     value.First().Should().Be("5test");
                 });
 
-                describe.It("should be add an string, integer and date", () => {
+                It("should be add an string, integer and date", () => {
                     var value = from a in "Hello World!".ToIdentity()
                                 from b in 7.ToIdentity()
                                 from c in (new DateTime(2010, 1, 11)).ToIdentity()
