@@ -34,8 +34,6 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maybe\Extensions\OptionExtensions.cs" />
-    <Compile Include="Maybe\Extensions\StringExtensions.cs" />
     <Compile Include="Maybe\IOption.cs" />
     <Compile Include="Maybe\None.cs" />
     <Compile Include="Maybe\Some.cs" />
@@ -43,12 +41,13 @@
     <Compile Include="Maybe\Option.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Identity\IdentityValue.cs" />
-    <Compile Include="Identity\Extensions\IdentityValueExtensions.cs" />
+    <Compile Include="Identity\IdentityValueExtensions.cs" />
+    <Compile Include="Maybe\OptionExtensions.cs" />
+    <Compile Include="Maybe\StringExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Maybe\" />
     <Folder Include="Identity\" />
-    <Folder Include="Identity\Extensions\" />
   </ItemGroup>
 </Project>

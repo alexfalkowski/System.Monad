@@ -20,7 +20,7 @@ namespace System.Monad.Specs.Identity
 {
     using System;
     using System.Linq;
-    using System.Monad.Identity.Extensions;
+    using System.Monad.Identity;
     using System.Spec;
     using FluentAssertions;
 

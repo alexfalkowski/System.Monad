@@ -20,7 +20,6 @@ namespace System.Monad.Specs.Maybe
 {
     using System;
     using System.Monad.Maybe;
-    using System.Monad.Maybe.Extensions;
     using System.Spec;
     using FluentAssertions;
 
