@@ -9,6 +9,8 @@
     <OutputType>Library</OutputType>
     <RootNamespace>System.Monad.Specs</RootNamespace>
     <AssemblyName>System.Monad.Specs</AssemblyName>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\System.Monad.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
