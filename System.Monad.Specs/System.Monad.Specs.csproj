@@ -35,19 +35,16 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="FluentAssertions">
-      <HintPath>..\packages\System.Spec.2.2.0\lib\net40\FluentAssertions.dll</HintPath>
+      <HintPath>..\packages\System.Spec.2.3.1\lib\net40\FluentAssertions.dll</HintPath>
     </Reference>
     <Reference Include="NSubstitute">
-      <HintPath>..\packages\System.Spec.2.2.0\lib\net40\NSubstitute.dll</HintPath>
+      <HintPath>..\packages\System.Spec.2.3.1\lib\net40\NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="System.Spec">
-      <HintPath>..\packages\System.Spec.2.2.0\lib\net40\System.Spec.dll</HintPath>
+      <HintPath>..\packages\System.Spec.2.3.1\lib\net40\System.Spec.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\packages\System.Spec.2.2.0\lib\net40\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Monad">
-      <HintPath>..\packages\System.Spec.2.2.0\lib\net40\System.Monad.dll</HintPath>
+      <HintPath>..\packages\System.Spec.2.3.1\lib\net40\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
