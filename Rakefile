@@ -67,5 +67,5 @@ desc 'Push the nuget package'
 nugetpush :nuget_push => :nuget_pack do |nuget|
   nuget.command = 'tools/nuget'
   nuget.apikey = '30ab3856-f684-4d0e-9e5e-b8282cdf6fa7'
-  nuget.package = "artifacts/System.Monad.#{VERSION}.nupkg"
+  nuget.package = "artifacts\\System.Monad.#{VERSION}.nupkg"
 end
