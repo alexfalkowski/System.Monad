@@ -21,6 +21,7 @@ namespace System.Monad.Identity
     using System.Collections;
     using System.Collections.Generic;
 
+    [Serializable]
     public class IdentityValue<T> : IEnumerable<T>
     {
         public IdentityValue(T value)

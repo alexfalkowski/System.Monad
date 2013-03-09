@@ -1,7 +1,7 @@
 require 'albacore'
 
 CURRENT_PATH = File.expand_path(File.dirname(__FILE__))
-VERSION = '1.4.2'
+VERSION = '1.4.3'
 ARTIFACTS_PATH = File.join(CURRENT_PATH, 'artifacts')
 
 desc 'Get all the referenced packages'
@@ -12,7 +12,7 @@ exec :packages do |command|
 end
 
 desc 'Build the solution'
-xbuild :build => :assembly_info do |build|
+msbuild :build => :assembly_info do |build|
   FileUtils.rm_rf(ARTIFACTS_PATH)
   build.solution = 'System.Monad.sln'
   build.properties = { :configuration => :Release, :OutputPath => ARTIFACTS_PATH }
@@ -22,11 +22,12 @@ xbuild :build => :assembly_info do |build|
 end
 
 desc 'Run the specs'
-exec :specs => :build do |command|
-  file = Dir['packages/**/spec.sh'].first
-  File.chmod(0700, file)
-  command.command = file
-  command.parameters 'artifacts'
+nunit :specs => :build do |nunit|
+  file = Dir['packages/**/nunit-console.exe'].first
+  nunit.command = file
+  nunit.options '-noshadow'
+  nunit.assemblies 'artifacts/System.Monad.Specs.dll'
+  nunit.parameters '-nologo'
 end
 
 desc 'Version the assembly'

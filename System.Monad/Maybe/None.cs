@@ -21,6 +21,7 @@ namespace System.Monad.Maybe
     using System;
     using System.Collections.Generic;
 
+    [Serializable]
     public class None<T> : OptionBase<T>, IEquatable<None<T>>
     {
         internal None()

@@ -22,6 +22,7 @@ namespace System.Monad.Maybe
     using System.Collections;
     using System.Collections.Generic;
 
+    [Serializable]
     public abstract class OptionBase<T> : IOption<T>
     {
         public virtual bool HasValue {

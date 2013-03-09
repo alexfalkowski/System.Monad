@@ -20,76 +20,88 @@ namespace System.Monad.Specs.Maybe
 {
     using System;
     using System.Monad.Maybe;
-    using System.Spec;
     using FluentAssertions;
+    using NUnit.Framework;
 
-    public class OptionExtensionsSpecification : Specification
+    [TestFixture]
+    public class OptionExtensionsSpecification
     {
-        protected override void Define()
+        [Test]
+        public void ShouldBeSomeUri()
         {
-            Describe("some values", () => {
-                It("should be some uri", () => {
-                    string test = "http://test.com";
-                    var value = test.SomeUriOrNone();
-                    value.Should().BeAssignableTo<Some<Uri>>();
-                });
+            string test = "http://test.com";
+            var value = test.SomeUriOrNone();
+            value.Should().BeAssignableTo<Some<Uri>>();
+        }
 
-                It("should be some integer", () => {
-                    string test = "0";
-                    var value = test.SomeIntegerOrNone();
-                    value.Should().BeAssignableTo<Some<int>>();
-                });
-            });
+        [Test]
+        public void ShouldBeSomeInteger()
+        {
+            string test = "0";
+            var value = test.SomeIntegerOrNone();
+            value.Should().BeAssignableTo<Some<int>>();
+        }
 
-            Describe("none values", () => {
-                It("should be none for nullable type", () => {
-                    int? integer = null;
-                    var value = integer.SomeOrNone();
-                    value.Should().BeAssignableTo<None<int>>();
-                });
+        [Test]
+        public void ShouldBeNoneForNullableType()
+        {
+            int? integer = null;
+            var value = integer.SomeOrNone();
+            value.Should().BeAssignableTo<None<int>>();
+        }
 
-                It("should be none", () => {
-                    string test = null;
-                    var value = test.SomeOrNone();
-                    value.Should().BeAssignableTo<None<string>>();
-                });
+        [Test]
+        public void ShouldBeNone()
+        {
+            string test = null;
+            var value = test.SomeOrNone();
+            value.Should().BeAssignableTo<None<string>>();
+        }
 
-                It("should be none with empty string", () => {
-                    string test = string.Empty;
-                    var value = test.SomeStringOrNone();
-                    value.Should().BeAssignableTo<None<string>>();
-                });
+        [Test]
+        public void ShouldBeNoneWithEmptyString()
+        {
+            string test = string.Empty;
+            var value = test.SomeStringOrNone();
+            value.Should().BeAssignableTo<None<string>>();
+        }
 
-                It("should be none with white space", () => {
-                    string test = "   ";
-                    var value = test.SomeStringOrNone();
-                    value.Should().BeAssignableTo<None<string>>();
-                });
+        [Test]
+        public void ShouldBeNoneWithRhiteSpace()
+        {
+            string test = "   ";
+            var value = test.SomeStringOrNone();
+            value.Should().BeAssignableTo<None<string>>();
+        }
 
-                It("should be none uri", () => {
-                    string test = "   ";
-                    var value = test.SomeUriOrNone();
-                    value.Should().BeAssignableTo<None<Uri>>();
-                });
+        [Test]
+        public void ShouldBeNoneUri()
+        {
+            string test = "   ";
+            var value = test.SomeUriOrNone();
+            value.Should().BeAssignableTo<None<Uri>>();
+        }
 
-                It("should be none integer", () => {
-                    string test = "   ";
-                    var value = test.SomeIntegerOrNone();
-                    value.Should().BeAssignableTo<None<int>>();
-                });
-            });
+        [Test]
+        public void ShouldBeNoneInteger()
+        {
+            string test = "   ";
+            var value = test.SomeIntegerOrNone();
+            value.Should().BeAssignableTo<None<int>>();
+        }
 
-            Describe("alternative values", () => {
-                It("should not get alternative value", () => {
-                    var value = 5.SomeOrNone().Or(6);
-                    value.Should().Equal(5.SomeOrNone());
-                });
-                
-                It("should get alternative value", () => {
-                    var value = Option.None<int>().Or(6);
-                    value.Should().Equal(6.SomeOrNone());
-                });
-            });
+        [Test]
+        public void ShouldGetAlternativeValue()
+        {
+            var value = Option.None<int>().Or(6);
+            value.Should().Equal(6.SomeOrNone());
+        }
+
+        [Test]
+        public void ShouldNotGetAlternativeValue()
+        {
+            var value = 5.SomeOrNone().Or(6);
+            value.Should().Equal(5.SomeOrNone());
         }
     }
 }

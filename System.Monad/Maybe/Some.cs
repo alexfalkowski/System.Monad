@@ -21,6 +21,7 @@ namespace System.Monad.Maybe
     using System;
     using System.Collections.Generic;
 
+    [Serializable]
     public class Some<T> : OptionBase<T>, IEquatable<Some<T>>
     {
         internal Some(T value)

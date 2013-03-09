@@ -20,82 +20,90 @@ namespace System.Monad.Specs.Maybe
 {
     using System;
     using System.Monad.Maybe;
-    using System.Spec;
     using FluentAssertions;
+    using NUnit.Framework;
 
-    public class OptionSpecification : Specification
+    [TestFixture]
+    public class OptionSpecification
     {
-        protected override void Define()
+        [Test]
+        public void ShouldBeSomeInteger()
         {
-            Describe("some values", () => {
-                It("should be some integer", () => {
-                    var value = Option.SomeOrNone<int>(1);
-                    value.Should().BeAssignableTo<Some<int>>();
-                });
-            });
+            var value = Option.SomeOrNone<int>(1);
+            value.Should().BeAssignableTo<Some<int>>();
+        }
 
-            Describe("none values", () => {
-                It("should be a none string", () => {
-                    var value = Option.None<string>();
-                    value.Should().BeAssignableTo<None<string>>();
-                });
-            });
+        [Test]
+        public void ShouldBeNoneString()
+        {
+            var value = Option.None<string>();
+            value.Should().BeAssignableTo<None<string>>();
+        }
 
-            Describe("actions", () => {
-                It("should perform action", () => {
-                    var value = Option.SomeOrNone<int>(1);
-                    var called = false;
-                    
-                    value.Into(test => called = true);
-                    called.Should().BeTrue();
-                });
+        [Test]
+        public void ShouldPerformAnAction()
+        {
+            var value = Option.SomeOrNone<int>(1);
+            var called = false;
 
-                It("should not perform action", () => {
-                    var value = Option.None<string>();
-                    var called = false;
-                    
-                    value.Into(test => called = true);
-                    called.Should().BeFalse();
-                });
-            });
+            value.Into(test => called = true);
+            called.Should().BeTrue();
+        }
 
-            Describe("functions", () => {
-                It("should perform function", () => {
-                    var value = Option.SomeOrNone<int>(1);
-                    var result = value.Into<int>(test => 3);
-                    result.Should().Equal(Option.SomeOrNone<int>(3));
-                });
+        [Test]
+        public void ShouldNotPerformAnAction()
+        {
+            var value = Option.None<string>();
+            var called = false;
 
-                It("should perform function with option", () => {
-                    var value = Option.SomeOrNone<int>(1);
-                    var result = value.Into<int>(test => Option.SomeOrNone<int>(3));
-                    result.Should().Equal(Option.SomeOrNone<int>(3));
-                });
+            value.Into(test => called = true);
+            called.Should().BeFalse();
+        }
 
-                It("should not perform function", () => {
-                    var value = Option.None<string>();
-                    var result = value.Into<string>(test => "Nope");
-                    result.Should().Equal(Option.None<string>());
-                });
-                
-                It("should not perform function with option", () => {
-                    var value = Option.None<string>();
-                    var result = value.Into<string>(test => Option.SomeOrNone<string>("Nope"));
-                    result.Should().Equal(Option.None<string>());
-                });
-            });
+        [Test]
+        public void ShouldPerformAFunction()
+        {
+            var value = Option.SomeOrNone<int>(1);
+            var result = value.Into<int>(test => 3);
+            result.Should().Equal(Option.SomeOrNone<int>(3));
+        }
 
-            Describe("equality", () => {
-                It("should be equal", () => {
-                    Option.None<object>().Should().Equal(Option.SomeOrNone<object>(null));
-                    Option.SomeOrNone<int>(1).Should().Equal(Option.SomeOrNone<int>(1));
-                });
-                
-                It("should have no value", () => {
-                    Option.None<object>().HasValue.Should().BeFalse();
-                    Option.SomeOrNone<int>(0).HasValue.Should().BeFalse();
-                });
-            });
+        [Test]
+        public void ShouldPerformAFunctionWithOption()
+        {
+            var value = Option.SomeOrNone<int>(1);
+            var result = value.Into<int>(test => Option.SomeOrNone<int>(3));
+            result.Should().Equal(Option.SomeOrNone<int>(3));
+        }
+
+        [Test]
+        public void ShouldNotPerformAFunction()
+        {
+            var value = Option.None<string>();
+            var result = value.Into<string>(test => "Nope");
+            result.Should().Equal(Option.None<string>());
+        }
+
+        [Test]
+        public void ShouldNotPerformAFunctionWithOption()
+        {
+            var value = Option.None<string>();
+            var result = value.Into<string>(test => Option.SomeOrNone<string>("Nope"));
+            result.Should().Equal(Option.None<string>());
+        }
+
+        [Test]
+        public void ShouldBeEqual()
+        {
+            Option.None<object>().Should().Equal(Option.SomeOrNone<object>(null));
+            Option.SomeOrNone<int>(1).Should().Equal(Option.SomeOrNone<int>(1));
+        }
+
+        [Test]
+        public void ShouldNotBeEqual()
+        {
+            Option.None<object>().HasValue.Should().BeFalse();
+            Option.SomeOrNone<int>(0).HasValue.Should().BeFalse();
         }
     }
 }

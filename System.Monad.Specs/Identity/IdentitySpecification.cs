@@ -21,36 +21,38 @@ namespace System.Monad.Specs.Identity
     using System;
     using System.Linq;
     using System.Monad.Identity;
-    using System.Spec;
     using FluentAssertions;
+    using NUnit.Framework;
 
-    public class IdentitySpecification : Specification
+    [TestFixture]
+    public class IdentitySpecification
     {
-        protected override void Define()
+        [Test]
+        public void ShouldAddTwoIntegers()
         {
-            Describe("identity values", () => {
-                It("should be add two integers", () => {
-                    var value = from x in 5.ToIdentity()
-                                from y in 6.ToIdentity()
-                                select x + y;
-                    value.First().Should().Be(11);
-                });
+            var value = from x in 5.ToIdentity()
+                        from y in 6.ToIdentity()
+                        select x + y;
+            value.First().Should().Be(11);
+        }
 
-                It("should be add an integer and a string", () => {
-                    var value = from x in 5.ToIdentity()
-                                from y in "test".ToIdentity()
-                                select x + y;
-                    value.First().Should().Be("5test");
-                });
+        [Test]
+        public void ShouldAddAnIntegerAndAString()
+        {
+            var value = from x in 5.ToIdentity()
+                        from y in "test".ToIdentity()
+                        select x + y;
+            value.First().Should().Be("5test");
+        }
 
-                It("should be add an string, integer and date", () => {
-                    var value = from a in "Hello World!".ToIdentity()
-                                from b in 7.ToIdentity()
-                                from c in (new DateTime(2010, 1, 11)).ToIdentity()
-                                select a + ", " + b + ", " + c;
-                    value.First().Should().Be("Hello World!, 7, 11/01/2010 12:00:00 AM");
-                });
-            });
+        [Test]
+        public void ShouldAddAnIntegerAStringAndDate()
+        {
+            var value = from a in "Hello World!".ToIdentity()
+                        from b in 7.ToIdentity()
+                        from c in (new DateTime(2010, 1, 11)).ToIdentity()
+                        select a + ", " + b + ", " + c;
+            value.First().Should().Be("Hello World!, 7, 11/01/2010 12:00:00 AM");
         }
     }
 }
