@@ -47,4 +47,4 @@ As mentioned on wikipedia
 
 An example in C# is as follows:
 
-    var result = Enumerable.Range(1, 5).Map(x => x).Reduce((x, y) => x + y);
+    var result = Enumerable.Range(1, 5).Map(x => x.ToString()).Reduce((x, y) => x + y);
