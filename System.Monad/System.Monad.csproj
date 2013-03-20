@@ -44,10 +44,12 @@
     <Compile Include="Identity\IdentityValueExtensions.cs" />
     <Compile Include="Maybe\OptionExtensions.cs" />
     <Compile Include="Maybe\StringExtensions.cs" />
+    <Compile Include="Collections\EnumerableExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Maybe\" />
     <Folder Include="Identity\" />
+    <Folder Include="Collections\" />
   </ItemGroup>
 </Project>

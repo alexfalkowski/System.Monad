@@ -1,8 +1,12 @@
 require 'albacore'
 
 CURRENT_PATH = File.expand_path(File.dirname(__FILE__))
-VERSION = '1.4.3'
+VERSION = '1.5.0'
 ARTIFACTS_PATH = File.join(CURRENT_PATH, 'artifacts')
+
+def is_windows
+  RbConfig::CONFIG['host_os'] =~ /mingw/
+end
 
 desc 'Get all the referenced packages'
 exec :packages do |command|
@@ -12,18 +16,29 @@ exec :packages do |command|
 end
 
 desc 'Build the solution'
-msbuild :build => :assembly_info do |build|
-  FileUtils.rm_rf(ARTIFACTS_PATH)
-  build.solution = 'System.Monad.sln'
-  build.properties = { :configuration => :Release, :OutputPath => ARTIFACTS_PATH }
-  build.targets :Rebuild
-  build.verbosity = 'quiet'
-  build.parameters '/nologo'
+if is_windows
+  msbuild :build => :assembly_info do |build|
+    FileUtils.rm_rf(ARTIFACTS_PATH)
+    build.solution = 'System.Monad.sln'
+    build.properties = { :configuration => :Release, :OutputPath => ARTIFACTS_PATH }
+    build.targets :Rebuild
+    build.verbosity = 'quiet'
+    build.parameters '/nologo'
+  end
+else
+  xbuild :build => :assembly_info do |build|
+    FileUtils.rm_rf(ARTIFACTS_PATH)
+    build.solution = 'System.Monad.sln'
+    build.properties = { :configuration => :Release, :OutputPath => ARTIFACTS_PATH }
+    build.targets :Rebuild
+    build.verbosity = 'quiet'
+    build.parameters '/nologo'
+  end
 end
 
 desc 'Run the specs'
 nunit :specs => :build do |nunit|
-  file = Dir['packages/**/nunit-console.exe'].first
+  file = (is_windows && Dir['packages/**/nunit-console.exe'].first) || 'tools/nunit-console'
   nunit.command = file
   nunit.options '-noshadow'
   nunit.assemblies 'artifacts/System.Monad.Specs.dll'
