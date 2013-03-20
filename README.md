@@ -37,3 +37,14 @@ An example in C# is as follows:
     var value = from x in 5.ToIdentity()
                 from y in 6.ToIdentity()
                 select x + y;
+
+Collections Monad
+-----------------
+
+As mentioned on wikipedia
+
+> List comprehensions are a special application of the list monad.
+
+An example in C# is as follows:
+
+    var result = Enumerable.Range(1, 5).Map(x => x).Reduce((x, y) => x + y);
