@@ -19,6 +19,7 @@
 namespace System.Monad.Collections
 {
     using System.Collections.Generic;
+    using System.Monad.Maybe;
     using System.Linq;
 
     public static class EnumerableExtensions
@@ -38,6 +39,14 @@ namespace System.Monad.Collections
         public static TSource Reduce<TSource>(this IEnumerable<TSource> source, Func<TSource, TSource, TSource> func)
         {
             return source.Aggregate(func);
+        }
+
+        public static void ForEach<TSource>(this IEnumerable<TSource> source,
+                                            Action<TSource> action)
+        {
+            foreach (var value in source) {
+                action.SomeOrNone().Into(actualAction => actualAction(value));
+            }
         }
     }
 }
